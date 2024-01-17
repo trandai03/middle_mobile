@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
 import './customer.dart';
-class Room{
-  final DateTime date;
-  final TimeOfDay start;
-  final KhachHang khachHang;
+class Room {
+  final DateTime? date;
+  final TimeOfDay? start;
+  final KhachHang? khachHang;
+  final int maPhong;
+  final bool empty;
+  final String type;
+  final int floor;
+
   Room({
-  required this.date,
-  required this.start,
-  required this.khachHang,
-});
+    required this.floor,
+    required this.type,
+    required this.empty,
+    required this.maPhong,
+     this.date,
+    this.start,
+    this.khachHang,
+  });
+
+
 
 }
 

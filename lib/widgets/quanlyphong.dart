@@ -47,9 +47,7 @@ class _QuanLyRoomState extends State<QuanLyRoom> {
 
   @override
   Widget build(BuildContext context){
-    return
-
-        DanhSachRoom(danhSachRoom);
+    return DanhSachRoom(danhSachRoom);
 
 
   }

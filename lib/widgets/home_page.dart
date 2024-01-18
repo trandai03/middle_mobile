@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project/widgets/formadd_room.dart';
 
 import './quanlyphong.dart';
 
@@ -15,8 +14,8 @@ class MyHomePage extends StatelessWidget {
   void serviceClick(int index, context) {
     switch (index) {
       case 0:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => FormAddRoom()));
+      // Navigator.push(
+      //     context, MaterialPageRoute(builder: (context) => ));
       case 1:
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => QuanLyRoom()));

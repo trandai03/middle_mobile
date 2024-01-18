@@ -1,8 +1,7 @@
 import "package:flutter/material.dart";
 
-import '../modules/room.dart';
-
 class FormAddRoom extends StatelessWidget {
+  final Function addRoom;
   var typeRoomList = [
     "Normal",
     "VIP",
@@ -12,20 +11,14 @@ class FormAddRoom extends StatelessWidget {
   final roomNumberController = TextEditingController();
   final floorController = TextEditingController();
 
-  var typeRoom = "Normal";
-  addRoom(String maPhong, bool empty, String type, String floor) {
-    final newRoom = Room(
-      maPhong: maPhong,
-      empty: empty,
-      type: type,
-      floor: floor,
-    );
-  }
-
+  String typeRoom = "Normal";
+  FormAddRoom(this.addRoom);
   submitData() {
     final enterroomNumberController = roomNumberController.text;
     final enterFloorController = floorController.text;
     final enterTypeRoomController = typeRoom;
+    addRoom(enterroomNumberController, true, enterTypeRoomController,
+        enterFloorController);
   }
 
   @override
@@ -68,10 +61,10 @@ class FormAddRoom extends StatelessWidget {
                 controller: floorController,
               ),
               TextButton(
-                child: Text('Them sinh vien'),
+                child: Text('Them phong'),
                 onPressed: () {
-                  addRoom(roomNumberController.toString(), true, typeRoom,
-                      floorController.toString());
+                  submitData();
+                  Navigator.pop(context);
                 },
               )
             ],

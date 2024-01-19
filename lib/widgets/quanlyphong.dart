@@ -19,7 +19,7 @@ class _QuanLyRoomState extends State<QuanLyRoom> {
     Room(
       maPhong: "201",
       empty: true,
-      type: "Nomarl",
+      type: "Normal",
       floor: "2",
     ),
     Room(
@@ -49,9 +49,11 @@ class _QuanLyRoomState extends State<QuanLyRoom> {
           "List Room",
           style: TextStyle(
             fontSize: 20,
+            color: Colors.white,
           ),
         ),
-        backgroundColor: Colors.red,
+        centerTitle: true,
+        backgroundColor: Colors.green,
       ),
       body: Container(
         child: SingleChildScrollView(
@@ -73,9 +75,9 @@ class _QuanLyRoomState extends State<QuanLyRoom> {
                       ),
                       decoration: BoxDecoration(
                           border: Border.all(
-                        color: Colors.purple,
-                        width: 2,
-                      )),
+                            color: Colors.purple,
+                            width: 2,
+                          )),
                       padding: EdgeInsets.all(10),
                       child: Text(room.maPhong.toString(),
                           style: TextStyle(

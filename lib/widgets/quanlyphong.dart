@@ -110,9 +110,16 @@ class _QuanLyRoomState extends State<QuanLyRoom> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          // cai cho nay bn nen tim hieu state ful builder nghe
+          // nhiu luc ko update thi dung cai này vang anh
+
           showDialog(
             context: context,
-            builder: (ctx) => FormAddRoom(addRoom),
+            builder: (ctx) => FormAddRoom(addRoom: (t, n, p, v) {
+              setState(() {
+                danhSachRoom.add(Room(floor: v, type: n, empty: p, maPhong: t));
+              });
+            }),
           );
         },
         child: const Icon(Icons.add),

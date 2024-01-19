@@ -1,7 +1,16 @@
 import "package:flutter/material.dart";
 
-class FormAddRoom extends StatelessWidget {
-  final Function addRoom;
+class FormAddRoom extends StatefulWidget {
+  Function(String v, String c, bool x, String d) addRoom;
+  FormAddRoom({super.key, required this.addRoom});
+
+  @override
+  State<FormAddRoom> createState() => _FormAddRoomState();
+}
+
+class _FormAddRoomState extends State<FormAddRoom> {
+  // Function(String v, bool x, String c, String d) addRoom =
+  //     (String v, bool x, String c, String d) {};
   var typeRoomList = [
     "Normal",
     "VIP",
@@ -12,12 +21,12 @@ class FormAddRoom extends StatelessWidget {
   final floorController = TextEditingController();
 
   String typeRoom = "Normal";
-  FormAddRoom(this.addRoom);
+  //_FormAddRoomState(this.addRoom);
   submitData() {
     final enterroomNumberController = roomNumberController.text;
     final enterFloorController = floorController.text;
     final enterTypeRoomController = typeRoom;
-    addRoom(enterroomNumberController, true, enterTypeRoomController,
+    widget.addRoom(enterroomNumberController, enterTypeRoomController, true,
         enterFloorController);
   }
 
@@ -49,7 +58,9 @@ class FormAddRoom extends StatelessWidget {
                   );
                 }).toList(),
                 onChanged: (String? value1) {
-                  typeRoom = value1!;
+                  setState(() {
+                    typeRoom = value1!;
+                  });
                 },
               ),
               TextField(

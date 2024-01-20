@@ -21,7 +21,7 @@ class _NhapKhachhangState extends State<NhapKhachhang> {
     final enterPhoneController = phoneController.text;
     final enterIdController = idCController.text;
 
-    if ((enterHoVaTenController.length > 3) &&
+    if ((enterHoVaTenController.length >= 2) &&
         (int.tryParse(enterIdController) != null) &&
         (enterPhoneController.length > 0)) {
       KhachHang kh = KhachHang(
@@ -71,7 +71,7 @@ class _NhapKhachhangState extends State<NhapKhachhang> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 TextField(
-                  decoration: InputDecoration(labelText: 'Name Customer :'),
+                  decoration: InputDecoration(labelText: 'Name Customer:'),
                   controller: hoVaTenController,
                   // onSubmitted: (_) => submitData_customer(context),
                 ),
@@ -79,7 +79,7 @@ class _NhapKhachhangState extends State<NhapKhachhang> {
                   height: 10,
                 ),
                 TextField(
-                  decoration: InputDecoration(labelText: 'Phone Number :'),
+                  decoration: InputDecoration(labelText: 'Phone Number:'),
                   controller: phoneController,
                   // onSubmitted: (_) => submitData_customer(context),
                 ),
@@ -87,7 +87,7 @@ class _NhapKhachhangState extends State<NhapKhachhang> {
                   height: 10,
                 ),
                 TextField(
-                  decoration: InputDecoration(labelText: 'ID Card :'),
+                  decoration: InputDecoration(labelText: 'ID Card:'),
                   controller: idCController,
                   // onSubmitted: (_) => submitData_customer(context),
                 ),

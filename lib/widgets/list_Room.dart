@@ -22,112 +22,122 @@ class DanhSachRoom extends StatelessWidget {
                 print(room);
                 final String trangThai;
                 if (room.empty == true) {
-                  trangThai = " Trong";
+                  trangThai = " Trong ";
+                  return Card(
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                            vertical: 10,
+                            horizontal: 15,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.purple,
+                              width: 2,
+                            ),
+                          ),
+                          padding: EdgeInsets.all(10),
+                          child: Text(
+                            room.maPhong.toString(),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.purple,
+                            ),
+                          ),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              ' Type : ' + room.type,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "Trang thai : " + trangThai,
+                              style: TextStyle(
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(width: 10),
+                        Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                icon: Icon(Icons.delete_forever),
+                                onPressed: () {
+                                  _deleteRoom(context, room);
+                                },
+                              )
+                            ])
+                      ],
+                    ),
+                  );
                 } else {
                   trangThai = " Full";
                 }
                 return Card(
-                  child: Column(
-                    children: [
-                      Row(
-                        children: <Widget>[
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                              vertical: 10,
-                              horizontal: 15,
-                            ),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.purple,
-                                width: 2,
-                              ),
-                            ),
-                            padding: EdgeInsets.all(10),
-                            child: Text(
-                              room.maPhong.toString(),
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.purple,
-                              ),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 15,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.purple,
+                            width: 2,
+                          ),
+                        ),
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          room.maPhong.toString(),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.purple,
+                          ),
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            ' Type : ' + room.type,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                ' Type :' + room.type,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "Trang thai : " + trangThai,
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                ),
-                              )
-                            ],
-                          ),
-                          // SizedBox(
-                          //   width: 70,
-                          //   child: Row(
-                          //     children: [
-                          //       InkWell(
-                          //         onTap: () {},child:
-                          //         //       IconButton(
-                          //         //         icon: Icon(Icons.delete_forever),
-                          //         //         onPressed: () {
-                          //         //           _deleteRoom(context, room);
-                          //         //         },
-                          //         //       )
-                          //         //     ])
-                          //       )
-                          //     ],
-                          //   ),
-                          // )
-                          Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                IconButton(
-                                  icon: Icon(Icons.edit),
-                                  onPressed: () {
-                                    // re fresh
-                                    Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (cxt) => FormEditRoom(
-                                                    maPhong: room.maPhong,
-                                                    type: room.type,
-                                                    empty: room.empty,
-                                                    floor: room.floor)))
-                                        .then((value) {
-                                      print(value);
-                                      //  casi room no bij gi roi ntn cx duoc anh ak
-                                      room.maPhong = value["maPhong"];
-// empty nó là thuoc tinh gi bool ko ý là có tác dụng lm trong viec gi a phòng trống hay không á anh
-// kiểu bây giờ empty true thì em hiển thị bth false thì có thêm khách hàng nữa ,bay gio data khach hang o
-                                      room.type = value["type"];
-                                      room.floor = value["floor"];
-                                      // );
-                                      // room.maPhong=
-                                      roomProvider.editRoom(room);
-                                    });
-                                  },
-                                ),
-                                IconButton(
-                                  icon: Icon(Icons.delete_forever),
-                                  onPressed: () {
-                                    _deleteRoom(context, room);
-                                  },
-                                ),
-                              ]),
+                          Text(
+                            "Trang thai : " + trangThai,
+                            style: TextStyle(
+                              color: Colors.grey,
+                            ),
+                          )
                         ],
                       ),
-                      //if (room.empty != true) {}
+                      Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.delete_forever),
+                              onPressed: () {
+                                _deleteRoom(context, room);
+                              },
+                            )
+                          ])
                     ],
                   ),
                 );

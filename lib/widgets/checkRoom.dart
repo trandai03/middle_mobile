@@ -83,6 +83,24 @@ class CheckRoom extends StatelessWidget {
                               style: TextStyle(
                                 color: Colors.grey,
                               ),
+                            ),
+                            Text(
+                              "Ho va ten : " + room.khachHang!.hoVaTen,
+                              style: TextStyle(
+                                color: Colors.grey,
+                              ),
+                            ),
+                            Text(
+                              "Phone : " + room.khachHang!.phone,
+                              style: TextStyle(
+                                color: Colors.grey,
+                              ),
+                            ),
+                            Text(
+                              "ID : " + room.khachHang!.id,
+                              style: TextStyle(
+                                color: Colors.grey,
+                              ),
                             )
                           ],
                         ),

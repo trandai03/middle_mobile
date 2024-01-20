@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import './checkRoom.dart';
 import './formnhap_khachhang.dart';
 import './quanlyphong.dart';
+import './setting.dart';
 
 class MyHomePage extends StatelessWidget {
   var service = ["List Room", "Rent Room", "Check Room", "Settings"];
@@ -11,15 +12,18 @@ class MyHomePage extends StatelessWidget {
       case 0:
       // Navigator.push(
       //     context, MaterialPageRoute(builder: (context) => ));
-      case 1:
+      case 0:
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => QuanLyRoom()));
-      case 4:
+      case 1:
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => NhapKhachhang(() {})));
-      case 5:
+      case 2:
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => QuanLyCheckRoom()));
+      case 3:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => MySettings()));
     }
   }
 

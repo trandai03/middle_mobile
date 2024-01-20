@@ -1,29 +1,43 @@
 import 'package:flutter/material.dart';
 import './list_room_empty.dart';
+import 'package:provider/provider.dart';
 import 'package:project/widgets/home_page.dart';
+import 'package:project/modules/room.dart';
+import 'package:project/modules/customer.dart';
 
-class NhapKhachhang extends StatelessWidget {
-  final Function addCustomer;
+class NhapKhachhang extends StatefulWidget {
+  NhapKhachhang({super.key});
+  @override
+  State<NhapKhachhang> createState() => _NhapKhachhangState();
+}
 
+class _NhapKhachhangState extends State<NhapKhachhang> {
   final hoVaTenController = TextEditingController();
-  final idCController = TextEditingController();
   final phoneController = TextEditingController();
-
-  NhapKhachhang(this.addCustomer);
+  final idCController = TextEditingController();
 
   submitData_customer(BuildContext context) {
     final enterHoVaTenController = hoVaTenController.text;
-    final enterIdController = idCController.text;
     final enterPhoneController = phoneController.text;
+    final enterIdController = idCController.text;
 
     if ((enterHoVaTenController.length > 3) &&
         (int.tryParse(enterIdController) != null) &&
         (enterPhoneController.length > 0)) {
-      addCustomer(
-        enterHoVaTenController,
-        enterIdController,
-        enterPhoneController,
+      KhachHang kh = KhachHang(
+          hoVaTen: enterHoVaTenController,
+          phone: enterPhoneController,
+          id: enterIdController);
+      Provider.of<RoomProvider>(context, listen: false).addRoom_full(
+        '',
+        true,
+        '',
+        '',
+        kh,
       );
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return QuanLyRoomEmpty();
+      }));
     } else {
       return;
     }
@@ -33,27 +47,22 @@ class NhapKhachhang extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Rent", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),),
+        title: Text(
+          "Rent",
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        ),
         centerTitle: true,
         backgroundColor: Colors.green,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) {
-              // do something
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
               return MyHomePage();
             }));
           },
         ),
       ),
       body: Container(
-        // decoration: BoxDecoration(
-        //   image: DecorationImage(
-        //     image: AssetImage('assets/your_image.jpg'),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
         child: Card(
           elevation: 5,
           child: Container(
@@ -62,38 +71,38 @@ class NhapKhachhang extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 TextField(
-                  decoration: InputDecoration(labelText: 'Name Customer:'),
+                  decoration: InputDecoration(labelText: 'Name Customer :'),
                   controller: hoVaTenController,
-                  onSubmitted: (_) => submitData_customer(context),
+                  // onSubmitted: (_) => submitData_customer(context),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 TextField(
-                  decoration: InputDecoration(labelText: 'Phone Number:'),
+                  decoration: InputDecoration(labelText: 'Phone Number :'),
                   controller: phoneController,
-                  onSubmitted: (_) => submitData_customer(context),
+                  // onSubmitted: (_) => submitData_customer(context),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 TextField(
-                  decoration: InputDecoration(labelText: 'ID Card:'),
+                  decoration: InputDecoration(labelText: 'ID Card :'),
                   controller: idCController,
-                  onSubmitted: (_) => submitData_customer(context),
+                  // onSubmitted: (_) => submitData_customer(context),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 Container(
-
                   child: TextButton(
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.green,
                       foregroundColor: Colors.white,
                     ),
                     child: Text('NEXT'),
-                    onPressed: (){
-                      print("Button pressed");
-                      Navigator.push(
-                          context, MaterialPageRoute(builder: (context) {
-                        // do something
-                        return QuanLyRoomEmpty();
-                      }));
+                    onPressed: () {
+                      submitData_customer(context);
                     },
                   ),
                 )
@@ -105,5 +114,3 @@ class NhapKhachhang extends StatelessWidget {
     );
   }
 }
-
-

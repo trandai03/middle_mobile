@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import './checkRoom.dart';
 import './formnhap_khachhang.dart';
 import './quanlyphong.dart';
@@ -16,8 +15,8 @@ class MyHomePage extends StatelessWidget {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => QuanLyRoom()));
       case 1:
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => NhapKhachhang(() {})));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => NhapKhachhang()));
       case 2:
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => QuanLyCheckRoom()));

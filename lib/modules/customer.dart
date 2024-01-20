@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class KhachHang{
+class KhachHang {
   final String hoVaTen;
-  final int idC;
-  final int age;
+  final String phone;
+  final String id;
   KhachHang({
     required this.hoVaTen,
-    required this.idC,
-    required this.age,
+    required this.phone,
+    required this.id,
   });
 }

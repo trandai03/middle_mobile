@@ -16,17 +16,33 @@ class ListRoomEmpty extends StatelessWidget {
           if (roomProvider.currentRoom.isNotEmpty) {
             return Column(
               children: roomProvider.currentRoom
-                  .where((room) => room.empty == true)
+                  .where((room) => room.empty == true && room.maPhong != '')
                   .map((room) {
-                final String trangThai;
-                if (room.empty == true) {
-                  trangThai = " Trong";
-                } else {
-                  trangThai = " Full";
-                }
+                final String trangThai = "Trong";
                 return TextButton(
                   onPressed: () {
-                    _showCompleteDialog(context);
+                    Provider.of<RoomProvider>(context, listen: false)
+                        .rent_room(room.maPhong, room.type, room.floor);
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Complete'),
+                          content: Text('Đã chọn thành công!'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                      return MyHomePage();
+                                    }));
+                              },
+                              child: Text('OK'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   },
                   child: Card(
                     child: Row(
@@ -91,29 +107,6 @@ class ListRoomEmpty extends StatelessWidget {
       ),
     );
   }
-}
-
-Future<void> _showCompleteDialog(BuildContext context) async {
-  return showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('Complete'),
-        content: Text('Da chon thanh cong!'),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                // do something
-                return MyHomePage();
-              }));
-            },
-            child: Text('OK'),
-          ),
-        ],
-      );
-    },
-  );
 }
 
 class QuanLyRoomEmpty extends StatefulWidget {

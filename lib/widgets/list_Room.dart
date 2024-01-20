@@ -52,7 +52,7 @@ class DanhSachRoom extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            ' Type :' + room.type,
+                            ' Type : ' + room.type,
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,

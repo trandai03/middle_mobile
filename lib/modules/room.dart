@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+
 import './customer.dart';
 
 class Room {
   final DateTime? date;
   final TimeOfDay? start;
   final KhachHang? khachHang;
-  final String maPhong;
-  bool empty;
-  final String type;
-  final String floor;
+   String maPhong;
+   bool empty;
+   String type;
+            String floor;
 
   Room({
     required this.floor,
@@ -31,7 +32,7 @@ class RoomProvider with ChangeNotifier {
     ),
     Room(
       maPhong: "201",
-      empty: false,
+      empty: true,
       type: "Normal",
       floor: "2",
     ),
@@ -56,45 +57,21 @@ class RoomProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void addRoom_full(
-      String maPhong, bool empty, String type, String floor, KhachHang kh) {
-    Room newRoom = Room(
-      maPhong: maPhong,
-      empty: empty,
-      type: type,
-      floor: floor,
-      khachHang: kh,
-    );
-    dsRoom.add(newRoom);
-    notifyListeners();
-  }
-
-  void rent_room(String maPhong, String type, String floor) {
-    Room newRoom = Room(
-      maPhong: maPhong,
-      empty: true,
-      type: type,
-      floor: floor,
-    );
-    dsRoom
-        .where((room) =>
-    room.maPhong == newRoom.maPhong &&
-        room.type == newRoom.type &&
-        room.floor == newRoom.floor)
-        .map((room) {
-      room.empty = false;
-    }).toList();
-    dsRoom.remove(dsRoom.last);
-    notifyListeners();
-  }
-
-  void check_Room(Room room) {
-    room.empty = true;
-    notifyListeners();
-  }
-
-  void deleteRoom(Room room) {
+  void deleteStudent(Room room) {
     dsRoom.remove(room);
+    notifyListeners();
+  }
+
+  void editRoom(Room old, Room news) {
+    // ko phải newRoom
+    // Room newRoom = Room(
+    //   maPhong: maPhong,
+    //   empty: empty,
+    //   type: type,
+    //   floor: floor,
+    // );
+    old = news;
+
     notifyListeners();
   }
 }

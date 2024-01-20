@@ -83,15 +83,13 @@ class _FormEditRoomState extends State<FormEditRoom> {
                   child: Text('Update'),
                   onPressed: () {
                     submitData();
-                    // dang le ban dau dax dufng  provider roi thi dung cai truyen index qua maf lo thi thui
+                    
                     Navigator.pop(context, {
                       "type": typeRoom,
                       "maPhong": roomNumberController.text,
                       "floor": floorController.text
                     });
-                    // nhap key value di
-                    //   ua sao reload cung la restart the em k bt
-                    //   thui dung vscode di
+                    
                   },
                 )
               ],

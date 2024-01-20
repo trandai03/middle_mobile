@@ -4,7 +4,7 @@ import './customer.dart';
 class Room {
   final DateTime? date;
   final TimeOfDay? start;
-  final KhachHang? khachHang;
+  KhachHang? khachHang;
   final String maPhong;
   bool empty;
   final String type;
@@ -30,11 +30,11 @@ class RoomProvider with ChangeNotifier {
       floor: "4",
     ),
     Room(
-      maPhong: "201",
-      empty: false,
-      type: "Normal",
-      floor: "2",
-    ),
+        maPhong: "201",
+        empty: false,
+        type: "Normal",
+        floor: "2",
+        khachHang: KhachHang(hoVaTen: "Duong", phone: "098", id: "123")),
     Room(
       maPhong: "404",
       empty: true,
@@ -70,19 +70,12 @@ class RoomProvider with ChangeNotifier {
   }
 
   void rent_room(String maPhong, String type, String floor) {
-    Room newRoom = Room(
-      maPhong: maPhong,
-      empty: true,
-      type: type,
-      floor: floor,
-    );
     dsRoom
         .where((room) =>
-    room.maPhong == newRoom.maPhong &&
-        room.type == newRoom.type &&
-        room.floor == newRoom.floor)
+    room.maPhong == maPhong && room.type == type && room.floor == floor)
         .map((room) {
       room.empty = false;
+      room.khachHang = dsRoom.last.khachHang;
     }).toList();
     dsRoom.remove(dsRoom.last);
     notifyListeners();

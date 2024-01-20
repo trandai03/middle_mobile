@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
+
 import './checkRoom.dart';
-import './quanlyphong.dart';
 import './formnhap_khachhang.dart';
+import './quanlyphong.dart';
 
 class MyHomePage extends StatelessWidget {
-  var service = [
-    "Add Room",
-    "List Room",
-    "Edit Room",
-    "Delete Room",
-    "Rent Room",
-    "Check Room",
-  ];
+  var service = ["List Room", "Rent Room", "Check Room", "Settings"];
   void serviceClick(int index, context) {
     switch (index) {
       case 0:
@@ -19,16 +13,13 @@ class MyHomePage extends StatelessWidget {
       //     context, MaterialPageRoute(builder: (context) => ));
       case 1:
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => QuanLyRoom())
-        );
+            context, MaterialPageRoute(builder: (context) => QuanLyRoom()));
       case 4:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => NhapKhachhang((){}))
-        );
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => NhapKhachhang(() {})));
       case 5:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => QuanLyCheckRoom())
-        );
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => QuanLyCheckRoom()));
     }
   }
 

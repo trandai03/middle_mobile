@@ -7,7 +7,7 @@ class DanhSachRoom extends StatelessWidget {
   final List<Room> danhSachRoom;
   DanhSachRoom(this.danhSachRoom);
   void _deleteRoom(BuildContext context, Room room) {
-    Provider.of<RoomProvider>(context, listen: false).deleteStudent(room);
+    Provider.of<RoomProvider>(context, listen: false).deleteRoom(room);
   }
 
   @override

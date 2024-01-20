@@ -57,7 +57,7 @@ class RoomProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void deleteStudent(Room room) {
+  void deleteRoom(Room room) {
     dsRoom.remove(room);
     notifyListeners();
   }

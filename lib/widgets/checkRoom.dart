@@ -34,8 +34,8 @@ class CheckRoom extends StatelessWidget {
                               onPressed: () {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
-                                      return MyHomePage();
-                                    }));
+                                  return MyHomePage();
+                                }));
                               },
                               child: Text('OK'),
                             ),

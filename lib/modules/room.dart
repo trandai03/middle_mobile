@@ -6,10 +6,10 @@ class Room {
   final DateTime? date;
   final TimeOfDay? start;
   final KhachHang? khachHang;
-   String maPhong;
-   bool empty;
-   String type;
-            String floor;
+  String maPhong;
+  bool empty;
+  String type;
+  String floor;
 
   Room({
     required this.floor,
@@ -62,7 +62,10 @@ class RoomProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void editRoom(Room old, Room news) {
+  void editRoom(
+    Room old,
+    //  Room news
+  ) {
     // ko phải newRoom
     // Room newRoom = Room(
     //   maPhong: maPhong,
@@ -70,8 +73,51 @@ class RoomProvider with ChangeNotifier {
     //   type: type,
     //   floor: floor,
     // );
-    old = news;
+    old;
 
+    notifyListeners();
+  }
+
+  // check_Room(){}//file checkroom
+  // addRoom_full(){}//file form nhap
+  // rent_room(){}
+  // liet ke tat ca cac file co tung ham do roi lm de do roi tim cach pull ve roi push len
+  // chac khai copy một file # roi pull về cai kia roi paste lại
+  // chu gio push len cai la lm lại tu dau
+  void addRoom_full(
+      String maPhong, bool empty, String type, String floor, KhachHang kh) {
+    Room newRoom = Room(
+      maPhong: maPhong,
+      empty: empty,
+      type: type,
+      floor: floor,
+      khachHang: kh,
+    );
+    dsRoom.add(newRoom);
+    notifyListeners();
+  }
+
+  void rent_room(String maPhong, String type, String floor) {
+    Room newRoom = Room(
+      maPhong: maPhong,
+      empty: true,
+      type: type,
+      floor: floor,
+    );
+    dsRoom
+        .where((room) =>
+            room.maPhong == newRoom.maPhong &&
+            room.type == newRoom.type &&
+            room.floor == newRoom.floor)
+        .map((room) {
+      room.empty = false;
+    }).toList();
+    dsRoom.remove(dsRoom.last);
+    notifyListeners();
+  }
+
+  void check_Room(Room room) {
+    room.empty = true;
     notifyListeners();
   }
 }

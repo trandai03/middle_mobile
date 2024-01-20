@@ -24,7 +24,7 @@ class ListRoomEmpty extends StatelessWidget {
                     Provider.of<RoomProvider>(context, listen: false)
                         .rent_room(room.maPhong, room.type, room.floor);
                     showDialog(
-                      context: context,
+                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
                           title: Text('Complete'),

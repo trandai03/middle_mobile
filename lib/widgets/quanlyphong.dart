@@ -1,45 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:project/widgets/formadd_room.dart';
+import 'package:provider/provider.dart';
 
 import '../modules/room.dart';
-import './formadd_room.dart';
 
 class QuanLyRoom extends StatefulWidget {
   @override
   State<QuanLyRoom> createState() => _QuanLyRoomState();
 }
 
-class _QuanLyRoomState extends State<QuanLyRoom> {
-  final List<Room> danhSachRoom = [
-    Room(
-      maPhong: "403",
-      empty: true,
-      type: "VIP",
-      floor: "4",
-    ),
-    Room(
-      maPhong: "201",
-      empty: true,
-      type: "Normal",
-      floor: "2",
-    ),
-    Room(
-      maPhong: "404",
-      empty: true,
-      type: "VIP",
-      floor: "4",
-    )
-  ];
-  void addRoom(String maPhong, bool empty, String type, String floor) {
-    Room newRoom = Room(
-      maPhong: maPhong,
-      empty: empty,
-      type: type,
-      floor: floor,
-    );
-    setState(() {
-      danhSachRoom.add(newRoom);
-    });
+class _QuanLyRoomState extends State<QuanLyRoom> with ChangeNotifier {
+  void _deleteRoom(BuildContext context, Room room) {
+    Provider.of<RoomProvider>(context, listen: false).deleteStudent(room);
   }
+
+  final List<Room> danhSachRoom = [];
 
   @override
   Widget build(BuildContext context) {
@@ -57,71 +32,95 @@ class _QuanLyRoomState extends State<QuanLyRoom> {
       ),
       body: Container(
         child: SingleChildScrollView(
-          child: Column(
-            children: danhSachRoom.map((room) {
-              final String trangThai;
-              if (room.empty == true) {
-                trangThai = " Trong";
-              } else {
-                trangThai = " Khong trong";
-              }
-              return Card(
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 15,
-                      ),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.purple,
-                            width: 2,
-                          )),
-                      padding: EdgeInsets.all(10),
-                      child: Text(room.maPhong.toString(),
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Colors.purple,
-                          )),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          ' Type :' + room.type,
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "Trang thai : " + trangThai,
-                          style: TextStyle(
-                            color: Colors.grey,
+          child: Consumer<RoomProvider>(
+            builder: (context, roomProvider, child) {
+              if (roomProvider.currentRoom.isNotEmpty) {
+                return Column(
+                  children: roomProvider.currentRoom.map((room) {
+                    final String trangThai;
+                    if (room.empty == true) {
+                      trangThai = " Trong";
+                    } else {
+                      trangThai = " Full";
+                    }
+                    return Card(
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 15,
+                            ),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.purple,
+                                width: 2,
+                              ),
+                            ),
+                            padding: EdgeInsets.all(10),
+                            child: Text(
+                              room.maPhong.toString(),
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: Colors.purple,
+                              ),
+                            ),
                           ),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            }).toList(),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                ' Type :' + room.type,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "Trang thai : " + trangThai,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              )
+                            ],
+                          ),
+                          Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                IconButton(
+                                  icon: Icon(Icons.delete_forever),
+                                  onPressed: () {
+                                    _deleteRoom(context, room);
+                                  },
+                                )
+                              ])
+                        ],
+                      ),
+                    );
+                  }).toList(),
+                );
+              } else {
+                return const Text(
+                  'Chưa thêm phòng nào',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                );
+              }
+            },
           ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // cai cho nay bn nen tim hieu state ful builder nghe
-          // nhiu luc ko update thi dung cai này vang anh
-
           showDialog(
             context: context,
-            builder: (ctx) => FormAddRoom(addRoom: (t, n, p, v) {
-              setState(() {
-                danhSachRoom.add(Room(floor: v, type: n, empty: p, maPhong: t));
-              });
-            }),
+            builder: (ctx) => FormAddRoom(),
           );
         },
         child: const Icon(Icons.add),

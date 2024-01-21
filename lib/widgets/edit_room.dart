@@ -82,7 +82,6 @@ class _FormEditRoomState extends State<FormEditRoom> {
                   child: Text('Update'),
                   onPressed: () {
                     submitData();
-
                     Navigator.pop(context, {
                       "type": typeRoom,
                       "maPhong": roomNumberController.text,

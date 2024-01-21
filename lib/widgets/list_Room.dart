@@ -28,8 +28,8 @@ class DanhSachRoom extends StatelessWidget {
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 15,
+                            vertical: 15,
+                            horizontal: 20,
                           ),
                           decoration: BoxDecoration(
                             border: Border.all(

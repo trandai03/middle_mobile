@@ -125,9 +125,10 @@ class DanhSachRoom extends StatelessWidget {
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          ' Type : ' + room.type,
+                          'Type : ' + room.type,
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -139,6 +140,15 @@ class DanhSachRoom extends StatelessWidget {
                             color: Colors.grey,
                           ),
                         ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
                         Text(
                           "Ho va ten : " + room.khachHang!.hoVaTen,
                           style: TextStyle(

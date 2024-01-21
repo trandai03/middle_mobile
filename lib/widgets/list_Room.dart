@@ -24,7 +24,7 @@ class DanhSachRoom extends StatelessWidget {
                   trangThai = " Trong ";
                   return Card(
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.symmetric(
@@ -51,7 +51,7 @@ class DanhSachRoom extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              ' Type : ' + room.type,
+                              'Type : ' + room.type,
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -65,7 +65,7 @@ class DanhSachRoom extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(width: 110),
+                        SizedBox(width: 50),
                         Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -105,7 +105,7 @@ class DanhSachRoom extends StatelessWidget {
                   trangThai = " Full ";
                   return Card(
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.symmetric(
@@ -147,12 +147,13 @@ class DanhSachRoom extends StatelessWidget {
                             ),
                           ],
                         ),
+                        SizedBox(width: 15),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              "Ho va ten : " + room.khachHang!.hoVaTen,
+                              "Name : " + room.khachHang!.hoVaTen,
                               style: TextStyle(
                                 color: Colors.grey,
                               ),
@@ -171,10 +172,12 @@ class DanhSachRoom extends StatelessWidget {
                             )
                           ],
                         ),
-                        Row(
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.end,
-                            mainAxisSize: MainAxisSize.min,
                             children: [
                               IconButton(
                                 icon: Icon(Icons.edit),

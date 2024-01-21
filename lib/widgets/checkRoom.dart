@@ -96,14 +96,14 @@ class CheckRoom extends StatelessWidget {
                             ],
                           ),
                           SizedBox(
-                            width: 20,
+                            width: 30,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Text(
-                                "Ho va ten : " + room.khachHang!.hoVaTen,
+                                "Name : " + room.khachHang!.hoVaTen,
                                 style: TextStyle(
                                   color: Colors.grey,
                                 ),

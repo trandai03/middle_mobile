@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import './list_room_empty.dart';
-import 'package:provider/provider.dart';
-import 'package:project/widgets/home_page.dart';
-import 'package:project/modules/room.dart';
 import 'package:project/modules/customer.dart';
+import 'package:project/modules/room.dart';
+import 'package:project/widgets/home_page.dart';
+import 'package:provider/provider.dart';
+
+import './list_room_empty.dart';
 
 class NhapKhachhang extends StatefulWidget {
   NhapKhachhang({super.key});
@@ -66,7 +67,14 @@ class _NhapKhachhangState extends State<NhapKhachhang> {
         child: Card(
           elevation: 5,
           child: Container(
-            padding: EdgeInsets.all(10),
+            // decoration: BoxDecoration(
+            //   image: DecorationImage(
+            //     image: AssetImage("assets/images/back1.png"),
+            //     fit: BoxFit.cover,
+            //     opacity: 0.5,
+            //   ),
+            // ),
+            //padding: EdgeInsets.all(10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [

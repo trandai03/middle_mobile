@@ -41,8 +41,14 @@ class _MySettings extends State<MySettings> {
                     value: Text('English'),
                   ),
                   SettingsTile.switchTile(
-                    onToggle: (value) {},
-                    initialValue: true,
+                    //value: _toggle,
+                    onToggle: (value) {
+                      setState(() {
+                        value = false;
+                        print("123");
+                      });
+                    },
+                    initialValue: false,
                     leading: Icon(Icons.format_paint),
                     title: Text('Enable custom theme'),
                   ),

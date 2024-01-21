@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import './checkRoom.dart';
 import './formnhap_khachhang.dart';
 import './quanlyphong.dart';
@@ -68,7 +69,8 @@ class MyHomePage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         margin: EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
+                            shape: BoxShape.circle,
+                            // borderRadius: BorderRadius.circular(30),
                             color: Colors.white30,
                             boxShadow: [
                               BoxShadow(
@@ -77,14 +79,18 @@ class MyHomePage extends StatelessWidget {
                                 spreadRadius: 2,
                                 blurRadius: 5,
                               )
-                            ]),
+                            ]
+                            // image: DecorationImage(
+                            //     image: AssetImage("assets/images/tron.png",)
+                            // )
+                            ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(10),
                               child: Image.asset(
-                                "assets/images/hotel.png",
+                                "assets/images/hotel-bg.png",
                                 width: 70,
                                 height: 70,
                               ),

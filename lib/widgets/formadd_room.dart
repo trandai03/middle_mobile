@@ -35,6 +35,10 @@ class _FormAddRoomState extends State<FormAddRoom> {
     return Consumer<RoomProvider>(builder: (context, roomProvider, child) {
       return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () => Navigator.pop(context),
+          ),
           title: Text(
             "Add Room",
             style: TextStyle(
@@ -76,6 +80,26 @@ class _FormAddRoomState extends State<FormAddRoom> {
                   child: Text('Them phong'),
                   onPressed: () {
                     submitData();
+                    // showDialog(
+                    //   context: context,
+                    //   builder: (BuildContext context) {
+                    //     return AlertDialog(
+                    //       title: Text('Complete'),
+                    //       content: Text('Thêm phòng thành công!'),
+                    //       actions: <Widget>[
+                    //         TextButton(
+                    //           onPressed: () {
+                    //             Navigator.push(context,
+                    //                 MaterialPageRoute(builder: (context) {
+                    //               return QuanLyRoom();
+                    //             }));
+                    //           },
+                    //           child: Text('OK'),
+                    //         ),
+                    //       ],
+                    //     );
+                    //   },
+                    // );
                     Navigator.pop(context);
                   },
                 )

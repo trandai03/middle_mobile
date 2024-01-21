@@ -5,6 +5,7 @@ import '../modules/room.dart';
 import 'list_Room.dart';
 
 class QuanLyRoom extends StatefulWidget {
+  QuanLyRoom({super.key});
   @override
   State<QuanLyRoom> createState() => _QuanLyRoomState();
 }
@@ -27,7 +28,17 @@ class _QuanLyRoomState extends State<QuanLyRoom> with ChangeNotifier {
         backgroundColor: Colors.green,
       ),
       body: Container(
-        child: DanhSachRoom(danhSachRoom),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/back1.png"),
+            fit: BoxFit.cover,
+            opacity: 0.5,
+          ),
+        ),
+        child: Container(
+          child: DanhSachRoom(danhSachRoom),
+          height: double.maxFinite,
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(

@@ -64,24 +64,7 @@ class _FormEditRoomState extends State<FormEditRoom> {
                       child: Text(value1),
                     );
                   }).toList(),
-                  onChanged: (String? value1) {
-                    setState(() {
-                      typeRoom = value1!;
-                    });
-                  },
-                ),
-                TextField(
-                  decoration: InputDecoration(labelText: 'Room Number'),
-                  controller: roomNumberController,
-                ),
-                TextField(
-                  decoration: InputDecoration(labelText: 'Floor'),
-                  controller: floorController,
-                ),
-                TextButton(
-                  child: Text('Update'),
-                  onPressed: () {
-                    submitData();
+                
 
                     Navigator.pop(context, {
                       "type": typeRoom,

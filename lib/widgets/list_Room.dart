@@ -63,7 +63,6 @@ class DanhSachRoom extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(width: 10),
                         Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.end,

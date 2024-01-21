@@ -27,7 +27,6 @@ class _FormEditRoomState extends State<FormEditRoom> {
     typeRoom = widget.type;
     roomNumberController.text = widget.maPhong!;
     floorController.text = widget.floor!;
-    // re phet van con loi ma anh
     super.initState();
   }
 
@@ -83,13 +82,12 @@ class _FormEditRoomState extends State<FormEditRoom> {
                   child: Text('Update'),
                   onPressed: () {
                     submitData();
-                    
+
                     Navigator.pop(context, {
                       "type": typeRoom,
                       "maPhong": roomNumberController.text,
                       "floor": floorController.text
                     });
-                    
                   },
                 )
               ],

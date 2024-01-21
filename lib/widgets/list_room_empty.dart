@@ -24,7 +24,7 @@ class ListRoomEmpty extends StatelessWidget {
                     Provider.of<RoomProvider>(context, listen: false)
                         .rent_room(room.maPhong, room.type, room.floor);
                     showDialog(
-                       context: context,
+                      context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
                           title: Text('Complete'),
@@ -34,8 +34,8 @@ class ListRoomEmpty extends StatelessWidget {
                               onPressed: () {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
-                                      return MyHomePage();
-                                    }));
+                                  return MyHomePage();
+                                }));
                               },
                               child: Text('OK'),
                             ),
@@ -72,7 +72,7 @@ class ListRoomEmpty extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              ' Type :' + room.type,
+                              ' Type : ' + room.type,
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,

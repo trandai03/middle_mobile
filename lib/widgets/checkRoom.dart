@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project/modules/room.dart';
 import 'package:provider/provider.dart';
 
+import '../modules/user_interface.dart';
 import './home_page.dart';
 
 class CheckRoom extends StatelessWidget {
@@ -156,21 +157,23 @@ class _QuanLyCheckRoomState extends State<QuanLyCheckRoom> with ChangeNotifier {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Check Room",
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.white,
+    return Consumer<UserInterface>(builder: (context, ui, child) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Check Room",
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.white,
+            ),
           ),
+          centerTitle: true,
+          backgroundColor: ui.appBarColor,
         ),
-        centerTitle: true,
-        backgroundColor: Colors.green,
-      ),
-      body: Container(
-        child: CheckRoom(danhSachRoom),
-      ),
-    );
+        body: Container(
+          child: CheckRoom(danhSachRoom),
+        ),
+      );
+    });
   }
 }

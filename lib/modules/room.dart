@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import './customer.dart';
 
 class Room {
@@ -61,20 +62,11 @@ class RoomProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void editRoom(
-    Room old,
-  ) {
+  void editRoom(Room old) {
     old;
-
     notifyListeners();
   }
 
-  // check_Room(){}//file checkroom
-  // addRoom_full(){}//file form nhap
-  // rent_room(){}
-  // liet ke tat ca cac file co tung ham do roi lm de do roi tim cach pull ve roi push len
-  // chac khai copy một file # roi pull về cai kia roi paste lại
-  // chu gio push len cai la lm lại tu dau
   void addRoom_full(
       String maPhong, bool empty, String type, String floor, KhachHang kh) {
     Room newRoom = Room(

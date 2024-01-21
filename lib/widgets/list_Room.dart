@@ -87,7 +87,7 @@ class DanhSachRoom extends StatelessWidget {
                                     room.maPhong = value["maPhong"];
                                     room.type = value["type"];
                                     room.floor = value["floor"];
-                                    roomProvider.editRoom(room);
+                                    //roomProvider.editRoom(room);
                                   });
                                 },
                               ),

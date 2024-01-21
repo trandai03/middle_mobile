@@ -10,7 +10,7 @@ class UserInterface with ChangeNotifier {
   ];
 
   double _fontSize = 15;
-  String _appBarColor = 'Grey';
+  String _appBarColor = 'Green';
 
   set appBarColor(newColor) {
     _appBarColor = newColor;

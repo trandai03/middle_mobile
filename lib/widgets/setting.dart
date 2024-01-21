@@ -1,63 +1,120 @@
 import 'package:flutter/material.dart';
-import 'package:settings_ui/settings_ui.dart';
+import 'package:provider/provider.dart';
 
-class MySettings extends StatefulWidget {
-  const MySettings({Key? key}) : super(key: key);
-  @override
-  State<MySettings> createState() => _MySettings();
-}
+import '../modules/user_interface.dart';
 
-class _MySettings extends State<MySettings> {
+class MySettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Cài đặt",
-          style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.w600,
-            letterSpacing: 1,
-            wordSpacing: 2,
-            color: Colors.white,
-          ),
-        ),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(20),
-              bottomLeft: Radius.circular(20)),
-        ),
-      ),
-      body: Center(
-        child: Container(
-          child: SettingsList(
-            sections: [
-              SettingsSection(
-                title: Text('Common'),
-                tiles: <SettingsTile>[
-                  SettingsTile.navigation(
-                    leading: Icon(Icons.language),
-                    title: Text('Language'),
-                    value: Text('English'),
-                  ),
-                  SettingsTile.switchTile(
-                    //value: _toggle,
-                    onToggle: (value) {
-                      setState(() {
-                        value = false;
-                        print("123");
-                      });
-                    },
-                    initialValue: false,
-                    leading: Icon(Icons.format_paint),
-                    title: Text('Enable custom theme'),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+    return Consumer<UserInterface>(
+      builder: (context, ui, child) {
+        return Scaffold(
+            appBar: AppBar(
+              title: Text("Settings"),
+              backgroundColor: ui.appBarColor,
+            ),
+            body: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      "Font size: ${ui.fontSize.toInt()}",
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                    Slider(
+                      min: 1,
+                      max: 100,
+                      value: ui.fontSize,
+                      onChanged: (newValue) {
+                        ui.fontSize = newValue;
+                      },
+                    ),
+                  ],
+                ),
+
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        "AppBar Color:",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      DropdownButton<String>(
+                        value: ui.strAppBarColor,
+                        items: UserInterface.listColorAppBar
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (String? value) {
+                          ui.appBarColor = value!;
+                        },
+                      )
+                    ]),
+
+                // Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //     children: [
+                //       Text(
+                //         " Homepage Background Color:",
+                //         style: TextStyle(
+                //           fontSize: 20,
+                //         ),
+                //       ),
+                //
+                //       DropdownButton<String>(
+                //         value: ui.strHomePageBackgroundColor,
+                //         items: UserInterface.listColorBackgroundHomepage.map<DropdownMenuItem<String>>(
+                //                 (String value) {
+                //               return DropdownMenuItem<String>(
+                //                 value: value,
+                //                 child: Text(value),
+                //               );
+                //             }
+                //         ).toList(),
+                //         onChanged: (String? value) {
+                //           ui.homePageBackgroundColor = value!;
+                //         },
+                //       )
+                //     ]
+                // ),
+                //
+                // Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //     children: [
+                //       Text(
+                //         " Support Background Color:",
+                //         style: TextStyle(
+                //           fontSize: 20,
+                //         ),
+                //       ),
+                //
+                //       DropdownButton<String>(
+                //         value: ui.strSupportBackgroundColor,
+                //         items: UserInterface.listColorBackgroundSupport.map<DropdownMenuItem<String>>(
+                //                 (String value) {
+                //               return DropdownMenuItem<String>(
+                //                 value: value,
+                //                 child: Text(value),
+                //               );
+                //             }
+                //         ).toList(),
+                //         onChanged: (String? value) {
+                //           ui.supportBackgroundColor = value!;
+                //         },
+                //       )
+                //     ]
+                // ),
+              ],
+            ));
+      },
     );
   }
 }

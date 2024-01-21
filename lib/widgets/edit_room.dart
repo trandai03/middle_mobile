@@ -30,12 +30,6 @@ class _FormEditRoomState extends State<FormEditRoom> {
     super.initState();
   }
 
-  submitData() {
-    final enterroomNumberController = roomNumberController.text;
-    final enterFloorController = floorController.text;
-    final enterTypeRoomController = typeRoom;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Consumer<RoomProvider>(builder: (context, roomProvider, child) {
@@ -81,7 +75,6 @@ class _FormEditRoomState extends State<FormEditRoom> {
                 TextButton(
                   child: Text('Update'),
                   onPressed: () {
-                    submitData();
                     Navigator.pop(context, {
                       "type": typeRoom,
                       "maPhong": roomNumberController.text,

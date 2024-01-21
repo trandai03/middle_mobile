@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import './list_room_empty.dart';
 
 class NhapKhachhang extends StatefulWidget {
-  NhapKhachhang({super.key});
+  //NhapKhachhang({super.key});
   @override
   State<NhapKhachhang> createState() => _NhapKhachhangState();
 }

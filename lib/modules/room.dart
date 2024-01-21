@@ -62,8 +62,8 @@ class RoomProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void editRoom(Room old) {
-    old;
+  void editRoom(Room old, Room newsR) {
+    dsRoom[dsRoom.indexOf(old)] = newsR;
     notifyListeners();
   }
 

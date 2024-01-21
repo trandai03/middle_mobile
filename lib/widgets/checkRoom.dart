@@ -148,12 +148,17 @@ class CheckRoom extends StatelessWidget {
 }
 
 class QuanLyCheckRoom extends StatefulWidget {
+  QuanLyCheckRoom({super.key});
   @override
   State<QuanLyCheckRoom> createState() => _QuanLyCheckRoomState();
 }
 
-class _QuanLyCheckRoomState extends State<QuanLyCheckRoom> with ChangeNotifier {
+class _QuanLyCheckRoomState extends State<QuanLyCheckRoom> {
   final List<Room> danhSachRoom = [];
+  @override
+  // void dispose() {
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {

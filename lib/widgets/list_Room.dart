@@ -144,14 +144,14 @@ class DanhSachRoom extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      width: 20,
+                      width: 15,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          "Ho va ten : " + room.khachHang!.hoVaTen,
+                          "Ho va ten : \n" + room.khachHang!.hoVaTen,
                           style: TextStyle(
                             color: Colors.grey,
                           ),
@@ -170,7 +170,7 @@ class DanhSachRoom extends StatelessWidget {
                         )
                       ],
                     ),
-                    Row(
+                    Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.end,
                         mainAxisSize: MainAxisSize.min,

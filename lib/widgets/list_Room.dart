@@ -65,7 +65,7 @@ class DanhSachRoom extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(width: 160),
+                        SizedBox(width: 110),
                         Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -104,9 +104,9 @@ class DanhSachRoom extends StatelessWidget {
                 } else {
                   trangThai = " Full ";
                   return Card(
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
                         Container(
                           margin: EdgeInsets.symmetric(
                             vertical: 10,
@@ -147,26 +147,6 @@ class DanhSachRoom extends StatelessWidget {
                             ),
                           ],
                         ),
-<<<<<<< HEAD
-                        SizedBox(
-                          width: 20,
-=======
-                      ],
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          "Ho va ten : \n" + room.khachHang!.hoVaTen,
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
->>>>>>> eb82dad05c65765510fae5b5fdfa85602ae00529
-                        ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.end,
@@ -191,9 +171,9 @@ class DanhSachRoom extends StatelessWidget {
                             )
                           ],
                         ),
-<<<<<<< HEAD
                         Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               IconButton(
@@ -223,49 +203,12 @@ class DanhSachRoom extends StatelessWidget {
                                 },
                               )
                             ]),
-                      ]));
-=======
-                        Text(
-                          "ID : " + room.khachHang!.id,
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        )
                       ],
                     ),
-                    Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () {
-                              // re fresh
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (cxt) => FormEditRoom(
-                                          maPhong: room.maPhong,
-                                          type: room.type,
-                                          empty: room.empty,
-                                          floor: room.floor))).then((value) {
-                                room.maPhong = value["maPhong"];
-                                room.type = value["type"];
-                                room.floor = value["floor"];
-                                roomProvider.editRoom(room);
-                              });
-                            },
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.delete_forever),
-                            onPressed: () {
-                              _deleteRoom(context, room);
-                            },
-                          )
-                        ]),
-                  ]));
->>>>>>> eb82dad05c65765510fae5b5fdfa85602ae00529
+                    // SizedBox(
+                    //   width: 15,
+                    // ),
+                  );
                 }
               }).toList(),
             );

@@ -3,11 +3,14 @@ import "package:project/modules/room.dart";
 import "package:provider/provider.dart";
 
 class FormEditRoom extends StatefulWidget {
-  final String? maPhong;
-  final bool? empty;
-  final String? type;
-  final String? floor;
-  FormEditRoom({this.maPhong, this.floor, this.empty, this.type});
+  // final String? maPhong;
+  // final bool? empty;
+  // final String? type;
+  // final String? floor;
+  Room? room;
+  FormEditRoom(
+      // {this.maPhong, this.floor, this.empty, this.type}{
+      {this.room});
   @override
   State<FormEditRoom> createState() => _FormEditRoomState();
 }
@@ -24,10 +27,15 @@ class _FormEditRoomState extends State<FormEditRoom> {
   String? typeRoom;
   @override
   void initState() {
-    typeRoom = widget.type;
-    roomNumberController.text = widget.maPhong!;
-    floorController.text = widget.floor!;
+    typeRoom = widget.room!.type;
+    roomNumberController.text = widget.room!.maPhong!;
+    floorController.text = widget.room!.floor!;
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -75,11 +83,22 @@ class _FormEditRoomState extends State<FormEditRoom> {
                 TextButton(
                   child: Text('Update'),
                   onPressed: () {
-                    Navigator.pop(context, {
-                      "type": typeRoom,
-                      "maPhong": roomNumberController.text,
-                      "floor": floorController.text
-                    });
+                    // Navigator.pop(context, {
+                    //   "type": typeRoom,
+                    //   "maPhong": roomNumberController.text,
+                    //   "floor": floorController.text
+                    // });
+                    //ok roi anh ak
+                    Room newRoom = Room(
+                      maPhong: roomNumberController.text,
+                      empty: widget.room!.empty,
+                      type: typeRoom!,
+                      floor: floorController.text,
+                      khachHang: widget.room!.khachHang,
+                    );
+                    roomProvider.editRoom(widget.room!, newRoom);
+                    // roomProvider.currentRoom.
+                    Navigator.pop(context);
                   },
                 )
               ],

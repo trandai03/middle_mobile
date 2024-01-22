@@ -12,7 +12,7 @@ class QuanLyRoom extends StatefulWidget {
   State<QuanLyRoom> createState() => _QuanLyRoomState();
 }
 
-class _QuanLyRoomState extends State<QuanLyRoom> with ChangeNotifier {
+class _QuanLyRoomState extends State<QuanLyRoom> {
   final List<Room> danhSachRoom = [];
 
   @override

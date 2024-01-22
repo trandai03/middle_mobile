@@ -10,7 +10,11 @@ class MySettings extends StatelessWidget {
       builder: (context, ui, child) {
         return Scaffold(
             appBar: AppBar(
-              title: Text("Settings"),
+              title: Center(
+                  child: Text(
+                "Settings",
+                style: TextStyle(color: Colors.white),
+              )),
               backgroundColor: ui.appBarColor,
             ),
             body: Column(

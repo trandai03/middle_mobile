@@ -80,18 +80,7 @@ class DanhSachRoom extends StatelessWidget {
                                       MaterialPageRoute(
                                           builder: (cxt) => FormEditRoom(
                                                 room: room,
-                                                // maPhong: room.maPhong,
-                                                // type: room.type,
-                                                // empty: room.empty,
-                                                // floor: room.floor
                                               )));
-
-                                  //     .then((value) {
-                                  // room.maPhong = value["maPhong"];
-                                  // room.type = value["type"];
-                                  // room.floor = value["floor"];
-                                  //roomProvider.editRoom(room);
-                                  // });
                                 },
                               ),
                               IconButton(

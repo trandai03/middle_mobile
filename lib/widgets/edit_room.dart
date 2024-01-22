@@ -83,12 +83,7 @@ class _FormEditRoomState extends State<FormEditRoom> {
                 TextButton(
                   child: Text('Update'),
                   onPressed: () {
-                    // Navigator.pop(context, {
-                    //   "type": typeRoom,
-                    //   "maPhong": roomNumberController.text,
-                    //   "floor": floorController.text
-                    // });
-                    //ok roi anh ak
+                    
                     Room newRoom = Room(
                       maPhong: roomNumberController.text,
                       empty: widget.room!.empty,
@@ -97,7 +92,7 @@ class _FormEditRoomState extends State<FormEditRoom> {
                       khachHang: widget.room!.khachHang,
                     );
                     roomProvider.editRoom(widget.room!, newRoom);
-                    // roomProvider.currentRoom.
+                    
                     Navigator.pop(context);
                   },
                 )
